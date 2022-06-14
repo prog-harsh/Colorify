@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./App.css";
+import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 
 function App() {
@@ -41,12 +42,8 @@ function App() {
 
   return (
     <div>
-      <header className="header">
-        <h2>Colorify</h2>
-        <h2 className="refresh" onClick={refresh}>
-          Refresh
-        </h2>
-      </header>
+      <Header onRefresh={refresh}/>
+      
       <MainContent hexCodes={hexColors} />
       <footer>
         <p> &#169; 2022 Colorify - Made with ❤️</p>
