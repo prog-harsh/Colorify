@@ -6,8 +6,6 @@ import MainContent from "./components/MainContent";
 function App() {
   let hexCodes = [];
 
-  const [hexColors, setHexCodes] = useState(hexCodes);
-
   function RGBToHex(r, g, b) {
     r = r.toString(16);
     g = g.toString(16);
@@ -21,6 +19,7 @@ function App() {
   }
 
   const generateHexCodes = () => {
+    hexCodes = [];
     for (let index = 0; index < 63; index++) {
       const r = Math.floor(Math.random() * 256);
       const g = Math.floor(Math.random() * 256);
@@ -30,6 +29,9 @@ function App() {
     }
   };
   generateHexCodes();
+
+  const [hexColors, setHexCodes] = useState(hexCodes);
+
   const refresh = () => {
     generateHexCodes();
     setHexCodes((prev) => {
@@ -40,11 +42,11 @@ function App() {
   return (
     <div>
       <header className="header">
-      <h2>Colorify</h2>
-      <h2 className="refresh" onClick={refresh}>
-        Refresh
-      </h2>
-    </header>
+        <h2>Colorify</h2>
+        <h2 className="refresh" onClick={refresh}>
+          Refresh
+        </h2>
+      </header>
       <MainContent hexCodes={hexColors} />
       <footer>
         <p> &#169; 2022 Colorify - Made with ❤️</p>
