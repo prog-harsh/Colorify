@@ -1,7 +1,13 @@
+import React, { useState } from "react";
+
 import "./App.css";
+import MainContent from "./components/MainContent";
+import Header from "./components/Header";
 
 function App() {
-  let list = [];
+  let hexCodes = [];
+
+  const [hexColors, setHexCodes] = useState(hexCodes);
 
   function RGBToHex(r, g, b) {
     r = r.toString(16);
@@ -15,35 +21,31 @@ function App() {
     return "#" + r + g + b;
   }
 
-  for (let index = 0; index < 63; index++) {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    const hex = RGBToHex(r, g, b);
-    console.log(hex);
-    console.log(r + " " + g + " " + b);
-    list.push(
-      <div
-        className="divs"
-        style={{ backgroundColor: `${hex}` }}
-      >
-        <span className="hex-text">{hex}</span>
-      </div>
-    );
-  }
+  const generateHexCodes = () => {
+    for (let index = 0; index < 63; index++) {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      const hex = RGBToHex(r, g, b);
+      hexCodes.push(hex);
+    }
+  };
+  generateHexCodes();
+  const refresh = () => {
+    generateHexCodes();
+    setHexCodes((prev) => {
+      return hexCodes;
+    });
+  };
+
   return (
-    <>
-      <header className="header">
-		<h2>Colorify</h2>
-		<h2 className="refresh" onClick={(e) => {
-			window.location.reload(false);
-		}}>Refresh</h2>
-	  </header>
-      <div className="main">{list}</div>
-	  <footer>
-		<p>	&#169; 2022 Colorify - Made with ❤️</p>
-	  </footer>
-    </>
+    <div>
+      <Header onRefresh={refresh} />
+      <MainContent hexCodes={hexColors} />
+      <footer>
+        <p> &#169; 2022 Colorify - Made with ❤️</p>
+      </footer>
+    </div>
   );
 }
 

@@ -1,0 +1,24 @@
+.header {
+    padding: 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-family: 'Irish Grover', cursive;
+    background-color: rgb(0, 5, 14);
+}
+
+.refresh {
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.refresh:hover {
+    color: tomato;
+}

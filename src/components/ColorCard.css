@@ -1,0 +1,25 @@
+.hex-text {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+}
+
+.card {
+    width: 250px;
+    height: 150px;
+    margin: 5px;
+}
+
+@media screen and (max-width:650px) {
+    .card {
+        height: 100px;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width:366px) {
+    .card {
+        height: 100px;
+        width: 130px;
+    }
+}
